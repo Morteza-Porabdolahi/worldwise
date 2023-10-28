@@ -16,13 +16,8 @@ const formatDate = (date) =>
 
 export function City() {
   const { id } = useParams()
-  const [searchParams] = useSearchParams()
-  
   const { getCity, currentCity, isLoading } = useCities();
-
-  const lat = searchParams.get('lat'),
-  lng = searchParams.get('lng');
-
+  
   const { cityName, emoji, date, notes } = currentCity;
 
   useEffect(() => {

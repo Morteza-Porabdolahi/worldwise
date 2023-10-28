@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import DatePicker from "react-datepicker";
 import { useNavigate } from "react-router-dom";
 
 import { Button } from "./Button";
@@ -9,6 +10,7 @@ import { Spinner } from "./Spinner";
 import { useUrlPosition } from "../hooks/useUrlPosition";
 
 import styles from "./Form.module.css";
+import { useCities } from "../contexts/CitiesContext";
 
 export function convertToEmoji(countryCode) {
   const codePoints = countryCode
@@ -30,6 +32,9 @@ export function Form() {
   const [isLoading, setIsLoading] = useState('');
 
   const [lat, lng] = useUrlPosition();
+
+  const { createCity, isLoading: contextIsLoading } = useCities();
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -40,7 +45,7 @@ export function Form() {
         const res = await fetch(`${BASE_URL}?latitude=${lat}&longitude=${lng}`);
         const data = await res.json();
 
-        if(!data.countryCode) throw new Error("That doesn't seem to be a city. Click somewhere else !")
+        if (!data.countryCode) throw new Error("That doesn't seem to be a city. Click somewhere else !")
 
         setCityName(data.city || data.locality || '');
         setCountry(data.countryName);
@@ -52,14 +57,33 @@ export function Form() {
       }
     }
 
-    fetchCityData();
-  }, [lat, lng])
+    if (lat && lng) fetchCityData();
+  }, [lat, lng]);
 
-  if(isLoading) return <Spinner />;
-  if(error) return <Message message={error}/>;
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    if (!cityName && !date) return;
+
+    const newCity = {
+      cityName,
+      country,
+      emoji,
+      date,
+      notes,
+      position: { lat, lng }
+    }
+
+    await createCity(newCity);
+    navigate('/app/cities')
+  }
+
+  if (!lat && !lng) return <Message message="Start by clicking somewhere on the map !" />
+  if (isLoading) return <Spinner />;
+  if (error) return <Message message={error} />;
 
   return (
-    <form className={styles.form}>
+    <form className={`${styles.form} ${contextIsLoading ? styles.loading : ''}`} onSubmit={handleSubmit}>
       <div className={styles.row}>
         <label htmlFor="cityName">City name</label>
         <input
@@ -72,10 +96,11 @@ export function Form() {
 
       <div className={styles.row}>
         <label htmlFor="date">When did you go to {cityName}?</label>
-        <input
+        <DatePicker
           id="date"
-          onChange={(e) => setDate(e.target.value)}
-          value={date}
+          onChange={date => setDate(date)}
+          selected={date}
+          dateFormat="dd/MM/yyyy"
         />
       </div>
 
