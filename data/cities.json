@@ -1,66 +1,6 @@
 {
   "cities": [
     {
-      "cityName": "Amiens",
-      "country": "France",
-      "emoji": "🇫🇷",
-      "date": "2023-10-27T12:37:05.614Z",
-      "notes": "ssssss",
-      "position": {
-        "lat": "49.89463439573421",
-        "lng": "2.2686767578125004"
-      },
-      "id": 98443206
-    },
-    {
-      "cityName": "Gent",
-      "country": "Belgium",
-      "emoji": "🇧🇪",
-      "date": "2023-10-27T12:37:05.614Z",
-      "notes": "ssssss",
-      "position": {
-        "lat": "51.02412130394265",
-        "lng": "3.7573242187500004"
-      },
-      "id": 98443208
-    },
-    {
-      "cityName": "Gemeente Vlieland",
-      "country": "Netherlands (the)",
-      "emoji": "🇳🇱",
-      "date": "2023-10-27T12:37:05.614Z",
-      "notes": "ssssss",
-      "position": {
-        "lat": "53.12370179884573",
-        "lng": "5.108642578125001"
-      },
-      "id": 98443210
-    },
-    {
-      "cityName": "Ratekau",
-      "country": "Germany",
-      "emoji": "🇩🇪",
-      "date": "2023-10-27T12:43:14.826Z",
-      "notes": "",
-      "position": {
-        "lat": "53.94315470224928",
-        "lng": "10.7171630859375"
-      },
-      "id": 98443212
-    },
-    {
-      "cityName": "Huesca",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2023-10-27T13:34:46.065Z",
-      "notes": "test",
-      "position": {
-        "lat": "42.15118709351198",
-        "lng": "-0.43395996093750006"
-      },
-      "id": 98443213
-    },
-    {
       "cityName": "Lubeck",
       "country": "Germany",
       "emoji": "🇩🇪",
@@ -83,6 +23,42 @@
         "lng": "-0.0439453125"
       },
       "id": 98443215
+    },
+    {
+      "cityName": "Alfambra",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2023-10-28T14:55:22.213Z",
+      "notes": "",
+      "position": {
+        "lat": "40.543026009955014",
+        "lng": "-1.1151123046875002"
+      },
+      "id": 98443216
+    },
+    {
+      "cityName": "Poyatos",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2023-10-31T13:27:07.203Z",
+      "notes": "",
+      "position": {
+        "lat": "40.40513069752789",
+        "lng": "-2.0489501953125004"
+      },
+      "id": 98443217
+    },
+    {
+      "cityName": "Buendia",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2023-10-31T13:31:38.194Z",
+      "notes": "",
+      "position": {
+        "lat": "40.333983227838104",
+        "lng": "-2.79052734375"
+      },
+      "id": 98443218
     }
   ]
 }

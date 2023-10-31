@@ -22,7 +22,7 @@ export function Login() {
   }
 
   useEffect(() => {
-    if(isAuth) navigate('/app', { replace: true });
+    if(isAuth) navigate('/app');
   }, [isAuth, navigate])
 
   return (

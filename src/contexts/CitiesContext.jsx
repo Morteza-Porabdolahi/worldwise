@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useReducer } from "react"
+import { createContext, useCallback, useContext, useEffect, useReducer } from "react"
 
 const CitiesContext = createContext();
 
@@ -111,7 +111,7 @@ export const CitiesProvider = ({ children }) => {
     }
   }
 
-  async function getCity(id) {
+  const getCity = useCallback(async function getCity(id) {
     if(+id === currentCity.id) return;
     
     try {
@@ -123,7 +123,7 @@ export const CitiesProvider = ({ children }) => {
     } catch (e) {
       dispatch({ type: 'rejected', payload: 'There was an error !' });
     }
-  }
+  }, [currentCity.id])
 
   return (
     <CitiesContext.Provider value={{
